@@ -98,6 +98,53 @@ int main(int argc, char *argv[]) {
         }
     }
     
+    //algoritmo de protecao;
+    bool progresso = true;
+    while(progresso == true){
+        progresso = false;
+
+        bool liberado = false;
+        for(int i = 0; i < numeroProcessos; i++){
+            liberado = false;
+    
+            if(finish[i] == false){
+                for(int j = 0; j < numeroRecursos; j++){
+                    if(need[i][j] <= work[j]){
+                        liberado = true;
+                    }else{
+                        liberado = false;
+                        break;
+    
+                    }
+                }
+    
+                if(liberado == true){
+    
+                    for(int k = 0; k < numeroRecursos; k++){
+                        work[k] += allocation[i][k];
+    
+                    }
+                    finish[i] = true;
+                    progresso = true;
+                }
+    
+            }else{
+                continue;
+            }
+
+            
+        }
+    }
+    bool estadoSeguro = true;
+    
+    for(int i = 0; i < numeroProcessos; i++){
+        if(finish[i] == false){
+            estadoSeguro = false;
+            break;
+        }
+    }
+
+    //fim do algoritmo do protecao;
 
     return 0;
 }
