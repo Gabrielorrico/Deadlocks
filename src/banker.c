@@ -136,8 +136,39 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
             free(request);
 
         }else if(strcmp(tok, "RL") == 0){
+            int processo; 
 
+            tok = strtok(NULL, " \n");
+            processo = strtol(tok, NULL, 10);
+
+            int *release = malloc(numeroRecursos * sizeof(int));
+
+            for(int i = 0; i < numeroRecursos; i++){
+                tok = strtok(NULL, " \n");
+                release[i] = strtol(tok, NULL, 10);
+            }
+
+            bool releaseValido = true;
+            for(int i = 0; i < numeroRecursos; i++){
+                if(release[i] <= allocation[processo][i]){
+                    releaseValido = true;
+                }else{
+                    releaseValido = false;
+                    break;
+                }
+            }
+
+            if(releaseValido == true){
+                for(int i = 0; i < numeroRecursos; i++){
+                    available[i] += release[i];
+                    allocation[processo][i] -= release[i];
+                    need[processo][i] += release[i];
+                }
+            }
+
+            free(release);
         }else if(strcmp(tok, "*") == 0){
+            break;
 
         }
     }
