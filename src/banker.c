@@ -13,6 +13,9 @@ int main(int argc, char *argv[]) {
 
     int *available;
     available = malloc(numeroRecursos * sizeof(int));
+
+    int *work;
+    work = malloc(numeroRecursos * sizeof(int));
     
     int **allocation;
 
@@ -29,7 +32,7 @@ int main(int argc, char *argv[]) {
 
     }
 
-    rewind(arquivo);
+    fclose(arquivo);
 
     allocation = malloc(numeroProcessos * sizeof(int *));
 
@@ -54,13 +57,46 @@ int main(int argc, char *argv[]) {
     }
 
     bool *finish;
+    finish = malloc(numeroProcessos * sizeof(bool));
+    for(int i = 0; i < numeroProcessos; i++){
+        finish[i] = false;
+    }
 
     for(int i = 0; i < numeroRecursos; i++){
         recursosTotais[i] = strtol(argv[i + 1], NULL, 10);
         available[i] = strtol(argv[i + 1], NULL, 10);
-        
+        work[i] = strtol(argv[i + 1], NULL, 10);
+
     }
 
+    FILE *arq = fopen("customer.txt", "r");
+    if(arq == NULL){
+        fprintf(stderr, "ERRO: nao foi possivel abrir o arquivo customer");
+        return 1;
+
+    }
+
+    int i = 0;
+    char *tok;
+    
+    while (fgets(linha, sizeof(linha), arq) != NULL){
+        tok = strtok(linha,",");
+
+        for(int j = 0; j < numeroRecursos; j++){
+            max[i][j] = strtol(tok,NULL,10);
+            tok = strtok(NULL, ",");
+        }
+        i++;
+
+    }
+
+    fclose(arq);
+
+    for(int i = 0; i < numeroProcessos; i++){
+        for(int j = 0; j < numeroRecursos; j++){
+            need[i][j] = max[i][j] - allocation[i][j];
+        }
+    }
     
 
     return 0;
