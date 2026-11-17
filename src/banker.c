@@ -96,12 +96,21 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
             int processo;
 
             tok = strtok(NULL, " \r\n");
+
             if(tok == NULL){
-                fprintf(stderr, "ERRO: comando RQ invalido\n");
+                fprintf(stderr, "ERRO: processo invalido\n");
                 exit(1);
             }
 
-            processo = strtol(tok, NULL, 10);
+            char *fim;
+            long valor = strtol(tok, &fim, 10);
+
+            if(tok == fim || *fim != '\0' || valor < 0 || valor >= numeroProcessos){
+                fprintf(stderr, "ERRO: processo invalido\n");
+                exit(1);
+            }
+
+            processo = valor;
 
             if(processo < 0 || processo >= numeroProcessos){
                 fprintf(stderr, "ERRO: processo invalido\n");
@@ -118,12 +127,26 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
                     exit(1);
                 }
 
-                request[i] = strtol(tok, NULL, 10);
+                char *fim;
+                long valor = strtol(tok, &fim, 10);
+
+                if(tok == fim || *fim != '\0' || valor < 0 || valor > 2147483647L){
+                    fprintf(stderr, "ERRO: quantidade de recursos invalida no RQ\n");
+                    exit(1);
+                }
+
+                request[i] = valor;
 
                 if(request[i] < 0){
                     fprintf(stderr, "ERRO: quantidade de recursos invalida no RQ\n");
                     exit(1);
                 }
+            }
+
+            tok = strtok(NULL, " \r\n");
+            if(tok != NULL){
+                fprintf(stderr, "ERRO: quantidade de recursos invalida no RQ\n");
+                exit(1);
             }
 
             bool requestValido = true;
@@ -213,12 +236,21 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
             int processo;
 
             tok = strtok(NULL, " \r\n");
+
             if(tok == NULL){
-                fprintf(stderr, "ERRO: comando RL invalido\n");
+                fprintf(stderr, "ERRO: processo invalido\n");
                 exit(1);
             }
 
-            processo = strtol(tok, NULL, 10);
+            char *fim;
+            long valor = strtol(tok, &fim, 10);
+
+            if(tok == fim || *fim != '\0' || valor < 0 || valor >= numeroProcessos){
+                fprintf(stderr, "ERRO: processo invalido\n");
+                exit(1);
+            }
+
+            processo = valor;
 
             if(processo < 0 || processo >= numeroProcessos){
                 fprintf(stderr, "ERRO: processo invalido\n");
@@ -235,12 +267,26 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
                     exit(1);
                 }
 
-                release[i] = strtol(tok, NULL, 10);
+                char *fim;
+                long valor = strtol(tok, &fim, 10);
+
+                if(tok == fim || *fim != '\0' || valor < 0 || valor > 2147483647L){
+                    fprintf(stderr, "ERRO: quantidade de recursos invalida no RL\n");
+                    exit(1);
+                }
+
+                release[i] = valor;
 
                 if(release[i] < 0){
                     fprintf(stderr, "ERRO: quantidade de recursos invalida no RL\n");
                     exit(1);
                 }
+            }
+
+            tok = strtok(NULL, " \r\n");
+            if(tok != NULL){
+                fprintf(stderr, "ERRO: quantidade de recursos invalida no RL\n");
+                exit(1);
             }
 
             bool releaseValido = true;
@@ -272,6 +318,13 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
             free(release);
 
         }else if(strcmp(tok, "*") == 0){
+            tok = strtok(NULL, " \r\n");
+
+            if(tok != NULL){
+                fprintf(stderr, "ERRO: comando invalido\n");
+                exit(1);
+            }
+
             fprintf(resultado, "MAXIMUM | ALLOCATION | NEED\n");
 
             for(int i = 0; i < numeroProcessos; i++){
@@ -331,6 +384,21 @@ int main(int argc, char *argv[]) {
     
     int *recursosTotais;
     numeroRecursos = argc - 1;
+    if(numeroRecursos <= 0){
+        fprintf(stderr, "ERRO: informe a quantidade de recursos\n");
+        return 1;
+    }
+
+    for(int i = 1; i < argc; i++){
+        char *fim;
+        long valor = strtol(argv[i], &fim, 10);
+
+        if(argv[i][0] == '\0' || *fim != '\0' || valor < 0 || valor > 2147483647L){
+            fprintf(stderr, "ERRO: quantidade de recursos invalida\n");
+            return 1;
+        }
+    }
+
     recursosTotais = malloc(numeroRecursos * sizeof(int));
     
     int *available;
@@ -345,6 +413,7 @@ int main(int argc, char *argv[]) {
         return 1;
 
     }
+
     char linha[256];
     while(fgets(linha, sizeof(linha), arquivo) != NULL){
         numeroProcessos++;
@@ -352,6 +421,13 @@ int main(int argc, char *argv[]) {
     }
 
     fclose(arquivo);
+
+    if(numeroProcessos == 0){
+        fprintf(stderr, "ERRO: arquivo customer.txt vazio\n");
+        free(recursosTotais);
+        free(available);
+        return 1;
+    }
 
     allocation = malloc(numeroProcessos * sizeof(int *));
 
@@ -392,11 +468,36 @@ int main(int argc, char *argv[]) {
     char *tok;
 
     while (fgets(linha, sizeof(linha), arq) != NULL){
-        tok = strtok(linha,",");
+        tok = strtok(linha,",\r\n");
 
         for(int j = 0; j < numeroRecursos; j++){
-            max[i][j] = strtol(tok,NULL,10);
-            tok = strtok(NULL, ",");
+            if(tok == NULL){
+                fprintf(stderr, "ERRO: quantidade de recursos invalida no customer.txt\n");
+                fclose(arq);
+                return 1;
+            }
+
+            char *fim;
+            long valor = strtol(tok, &fim, 10);
+
+            while(*fim == ' ' || *fim == '\t'){
+                fim++;
+            }
+
+            if(tok == fim || *fim != '\0' || valor < 0 || valor > 2147483647L || valor > recursosTotais[j]){
+                fprintf(stderr, "ERRO: valor invalido no customer.txt\n");
+                fclose(arq);
+                return 1;
+            }
+
+            max[i][j] = valor;
+            tok = strtok(NULL, ",\r\n");
+        }
+
+        if(tok != NULL){
+            fprintf(stderr, "ERRO: quantidade de recursos invalida no customer.txt\n");
+            fclose(arq);
+            return 1;
         }
         i++;
 
@@ -412,6 +513,18 @@ int main(int argc, char *argv[]) {
 
 
     lerComandos(numeroProcessos, numeroRecursos, allocation, max, need, available);
+
+    for(int i = 0; i < numeroProcessos; i++){
+        free(allocation[i]);
+        free(max[i]);
+        free(need[i]);
+    }
+
+    free(allocation);
+    free(max);
+    free(need);
+    free(recursosTotais);
+    free(available);
 
     return 0;
 }

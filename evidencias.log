@@ -19,3 +19,55 @@ make: *** [Makefile:5: banker] Error 1
 [?2004lexit
 
 Script done on 2026-11-16 21:35:59-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-16 21:41:47-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="55" LINES="13"]
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ make clean
+[?2004lrm -f banker
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -g src/banker.c -o banker
+[01m[Ksrc/banker.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksrc/banker.c:414:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KestadoSeguro[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  414 |     bool [01;35m[KestadoSeguro[m[K = algoritmoProtecao(numeroProcessos, numeroRecursos, allocation, need, available);
+      |          [01;35m[K^~~~~~~~~~~~[m[K
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [7m./banker 10 5[27m[7m [27m[7m7[27m[A]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 [K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[7m./banker 10 5[27m[7m [27m[7m7[27m[A]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004lERRO: comando invalido
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -g src/banker.c -o banker
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ make./banker 10 5 7 [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [K]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ make[K[K[K[Kexit
+[?2004lexit
+
+Script done on 2026-11-16 22:35:48-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-16 22:36:00-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="72" LINES="18"]
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -g src/banker.c -o banker
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ makeexit./banker 10 5 7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [7m./banker[27m./banker
+[?2004lERRO: informe a quantidade de recursos
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [7m./banker abc 5 7[27m./banker abc 5 7
+[?2004lERRO: quantidade de recursos invalida
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [7m./banker -1 5 7[27m./banker -1 5 7
+[?2004lERRO: quantidade de recursos invalida
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ [7m./banker 10 5[27m./banker 10 5
+[?2004lERRO: quantidade de recursos invalida no customer.txt
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5-1 5 7[1@abc[C[C[C[C[K 10 5 7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004l[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004lERRO: processo invalido
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004lERRO: quantidade de recursos invalida no RQ
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004lERRO: quantidade de recursos invalida no RQ
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ ./banker 10 5 7
+[?2004lERRO: comando invalido
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-16 22:48:09-03:00 [COMMAND_EXIT_CODE="1"]
