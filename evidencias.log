@@ -1,0 +1,21 @@
+Script started on 2026-11-16 21:35:09-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="55" LINES="13"]
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -g banker.c -o banker
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[Kbanker.c: No such file or directory
+compilation terminated.
+make: *** [Makefile:5: banker] Error 1
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -g banker.c -o banker
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[Kbanker.c: No such file or directory
+compilation terminated.
+make: *** [Makefile:5: banker] Error 1
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -g src/banker.c -o banker
+[01m[Ksrc/banker.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksrc/banker.c:414:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KestadoSeguro[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  414 |     bool [01;35m[KestadoSeguro[m[K = algoritmoProtecao(numeroProcessos, numeroRecursos, allocation, need, available);
+      |          [01;35m[K^~~~~~~~~~~~[m[K
+[?2004h]0;gabri@alien: /mnt/c/Users/gabri/Deadlocks[01;32mgabri@alien[00m:[01;34m/mnt/c/Users/gabri/Deadlocks[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-16 21:35:59-03:00 [COMMAND_EXIT_CODE="0"]

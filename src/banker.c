@@ -86,7 +86,7 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
     char *tok;
 
     while(fgets(linha, sizeof(linha), arquivo) != NULL){
-        tok = strtok(linha, " \n");
+        tok = strtok(linha, " \r\n");
 
         if(tok == NULL){
             continue;
@@ -95,7 +95,7 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
         if(strcmp(tok, "RQ") == 0){
             int processo;
 
-            tok = strtok(NULL, " \n");
+            tok = strtok(NULL, " \r\n");
             if(tok == NULL){
                 fprintf(stderr, "ERRO: comando RQ invalido\n");
                 exit(1);
@@ -111,7 +111,7 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
             int *request = malloc(numeroRecursos * sizeof(int));
 
             for(int i = 0; i < numeroRecursos; i++){
-                tok = strtok(NULL, " \n");
+                tok = strtok(NULL, " \r\n");
 
                 if(tok == NULL){
                     fprintf(stderr, "ERRO: quantidade de recursos invalida no RQ\n");
@@ -212,7 +212,7 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
         }else if(strcmp(tok, "RL") == 0){
             int processo;
 
-            tok = strtok(NULL, " \n");
+            tok = strtok(NULL, " \r\n");
             if(tok == NULL){
                 fprintf(stderr, "ERRO: comando RL invalido\n");
                 exit(1);
@@ -228,7 +228,7 @@ void lerComandos(int numeroProcessos, int numeroRecursos, int **allocation, int 
             int *release = malloc(numeroRecursos * sizeof(int));
 
             for(int i = 0; i < numeroRecursos; i++){
-                tok = strtok(NULL, " \n");
+                tok = strtok(NULL, " \r\n");
 
                 if(tok == NULL){
                     fprintf(stderr, "ERRO: quantidade de recursos invalida no RL\n");
@@ -410,9 +410,6 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    //algoritmo de protecao;
-    bool estadoSeguro = algoritmoProtecao(numeroProcessos, numeroRecursos, allocation, need, available);
-    //fim do algoritmo do protecao;
 
     lerComandos(numeroProcessos, numeroRecursos, allocation, max, need, available);
 
